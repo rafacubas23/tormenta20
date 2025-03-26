@@ -55,7 +55,17 @@ export default class ActorSheetT20Character extends ActorSheetT20 {
 		sheetData["layout"] = game.settings.get("tormenta20", "sheetTemplate");
 
 		this.actor.system.attributes.defesa.pda = this.actor.system.attributes.defesa.pda ?? 0;
+		sheetData.system.attributes.cargaArcana = sheetData.system.attributes.cargaArcana ?? { value: 0, max: 0, temp: 0 };
+		sheetData.system.attributes.cargaMarcial = sheetData.system.attributes.cargaMarcial ?? { value: 0, max: 0, temp: 0 };
 		
+		const carisma = sheetData.system.atributos?.car?.value ?? 0;
+
+		sheetData.system.attributes.cargaArcana.value = sheetData.system.attributes.cargaArcana.value ?? 0;
+		sheetData.system.attributes.cargaMarcial.value = sheetData.system.attributes.cargaMarcial.value ?? 0;
+
+		sheetData.system.attributes.cargaArcana.max = carisma;
+		sheetData.system.attributes.cargaMarcial.max = carisma;
+
 		sheetData.htmlFields.diario = await this.enrichHTML(sheetData.system.detalhes.diario.value, sheetData);
 		sheetData.htmlFields.diario1 = await this.enrichHTML(sheetData.system.detalhes.diario1.value, sheetData);
 		sheetData.htmlFields.diario2 = await this.enrichHTML(sheetData.system.detalhes.diario2.value, sheetData);

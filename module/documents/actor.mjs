@@ -1,9 +1,10 @@
 import ItemT20 from "../documents/item.mjs";
 // import { T20 } from '../config.mjs';
-import {d20Roll, simplifyRollFormula} from '../dice/dice.mjs';
+import { simplifyRollFormula, d20Roll, damageRoll } from '../dice/dice.mjs';
 import {applyOnUseEffects} from "../apps/ability-use.mjs";
 import AbilityUseDialog from "../apps/ability-use-dialog.mjs";
 import ChoicesDialog from "../apps/choices-dialog.mjs";
+import * as migrations from "./migrations.mjs";
 import {actorMigration} from "./migrations.mjs";
 
 /**
@@ -83,7 +84,7 @@ export default class ActorT20 extends Actor {
 	get defenseFormula() {
 		// later ...@bonus
 		if (this.type == 'character' ){
-			return ['@base','@atributo','@armadura','@escudo','@outros','@condi','@meionivel'];
+			return ['@base','@atributo','@armadura','@escudo','@outros','@condi'];
 		} else if (this.type == 'npc' ){
 			return ['@base','@outros','@condi'];
 		} else {
@@ -239,8 +240,6 @@ export default class ActorT20 extends Actor {
 
 		if ( this.type == 'character' ){
 			this._preparePVPMTotal();
-			this._prepareCargaArcanaTotal()
-			this._prepareCargaMarcialTotal()
 		} else if ( this.type == 'npc' ){
 			system.attributes.pv.min = (Math.floor(system.attributes.pv.max/2)*-1);
 		}
@@ -529,24 +528,6 @@ export default class ActorT20 extends Actor {
 	* Prepare HP and MP max value.
 	* @private
 	*/
-	_prepareCargaArcanaTotal() {
-		const resourceArcana = this.system.attributes.Arcana;
-		
-		resourceArcana.max = this.system.atributos.car
-		resourceArcana.value = Math.clamp(resourceArcana.value, 0, resourceArcana.max); // Ajusta o valor atual, limitando ao máximo
-	}
-
-	/**
-	 * Prepara o valor máximo e atual de carga marcial com base nos cálculos derivados e regras.
-	 */
-	_prepareCargaMarcialTotal() {
-		const resourceMarcial = this.system.attributes.Marcial;
-
-		resourceMarcial.max = this.system.atributos.car
-		resourceMarcial.value = Math.clamp(resourceMarcial.value, 0, resourceMarcial.max); // Ajusta o valor atual, limitando ao máximo
-	}
-
-
 	_preparePVPMTotal(){
 		const resourcePV = this.system.attributes.pv;
 		const resourcePM = this.system.attributes.pm;
