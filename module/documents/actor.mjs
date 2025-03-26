@@ -84,7 +84,7 @@ export default class ActorT20 extends Actor {
 	get defenseFormula() {
 		// later ...@bonus
 		if (this.type == 'character' ){
-			return ['@base','@atributo','@armadura','@escudo','@outros','@condi','meionivel'];
+			return ['@base','@atributo','@armadura','@escudo','@outros','@condi','@meionivel'];
 		} else if (this.type == 'npc' ){
 			return ['@base','@outros','@condi'];
 		} else {
