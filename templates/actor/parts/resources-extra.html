@@ -3,11 +3,16 @@
 	<li class="attribute flexcol">
 		<h4 class="attribute-name box-title">Carga Arcana</h4>
 		<div class="attribute-value multiple flexrow">
+
+			<button type="button" class="btn-decrement" onclick="alterarCargaarcana(-1)">–</button>
+
 			<input type="number" data-dtype="Number"
 						 placeholder="0"
 						 name="system.attributes.cargaArcana.value"
 						 value="{{system.attributes.cargaArcana.value}}"
 						 max="{{system.attributes.cargaArcana.max}}">
+
+			<button type="button" class="btn-increment" onclick="alterarCargaarcana(1)">+</button>
 
 			<span class="sep">/</span>
 
@@ -22,11 +27,16 @@
 	<li class="attribute flexcol">
 		<h4 class="attribute-name box-title">Carga Marcial</h4>
 		<div class="attribute-value multiple flexrow">
+
+			<button type="button" class="btn-decrement" onclick="alterarCargamarcial(-1)">–</button>
+
 			<input type="number" data-dtype="Number"
 						 placeholder="0"
 						 name="system.attributes.cargaMarcial.value"
 						 value="{{system.attributes.cargaMarcial.value}}"
 						 max="{{system.attributes.cargaMarcial.max}}">
+
+			<button type="button" class="btn-increment" onclick="alterarCargamarcial(1)">+</button>
 
 			<span class="sep">/</span>
 
@@ -39,3 +49,25 @@
 	</li>
 </ul>
 {{/if}}
+
+<script>
+	function alterarCargaarcana(incremento) {
+		const input = document.querySelector('input[name="system.attributes.cargaArcana.value"]');
+		let valorAtual = parseInt(input.value, 10) || 0;
+		valorAtual += incremento;
+		if (valorAtual < 0) {
+			valorAtual = 0;
+		}
+		input.value = valorAtual;
+	}
+	
+	function alterarCargamarcial(incremento) {
+		const input = document.querySelector('input[name="system.attributes.cargaMarcial.value"]');
+		let valorAtual = parseInt(input.value, 10) || 0;
+		valorAtual += incremento;
+		if (valorAtual < 0) {
+			valorAtual = 0;
+		}
+		input.value = valorAtual;
+	}
+</script>
