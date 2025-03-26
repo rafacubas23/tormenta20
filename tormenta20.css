@@ -75,6 +75,31 @@
   flex-wrap: wrap;
   justify-content: flex-start;
 }
+.attribute.flexcargas {
+	padding-bottom: 10px;
+}
+.btn-increment-arcana{
+	font-size: 30px;
+	color: #26549f;
+}
+.btn-decrement-arcana{
+	font-size: 30px;
+	color: #26549f;
+}
+.btn-increment-marcial{
+	font-size: 30px;
+	color: #770000;
+}
+.btn-decrement-marcial{
+	font-size: 30px;
+	color: #770000;
+}
+.attribute-name.box-title-marcial{
+	color: #770000;
+}
+.attribute-name.box-title-arcana{
+	color: #26549f;
+}
 .flexrow > * {
   flex: 1;
 }

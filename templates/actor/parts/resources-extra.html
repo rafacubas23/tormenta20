@@ -1,10 +1,10 @@
 {{#if showResources}}
 <ul class="attributes flexrow">
-	<li class="attribute flexcol">
-		<h4 class="attribute-name box-title">Carga Arcana</h4>
+	<li class="attribute flexcargas">
+		<h4 class="attribute-name box-title-arcana">Carga Arcana</h4>
 		<div class="attribute-value multiple flexrow">
 
-			<button type="button" class="btn-decrement" onclick="alterarCargaarcana(-1)">–</button>
+			<button type="button" class="btn-decrement-arcana" onclick="alterarCargaarcana(-1)">–</button>
 
 			<input type="number" data-dtype="Number"
 						 placeholder="0"
@@ -12,7 +12,7 @@
 						 value="{{system.attributes.cargaArcana.value}}"
 						 max="{{system.attributes.cargaArcana.max}}">
 
-			<button type="button" class="btn-increment" onclick="alterarCargaarcana(1)">+</button>
+			<button type="button" class="btn-increment-arcana" onclick="alterarCargaarcana(1)">+</button>
 
 			<span class="sep">/</span>
 
@@ -24,11 +24,11 @@
 		</div>
 	</li>
 
-	<li class="attribute flexcol">
-		<h4 class="attribute-name box-title">Carga Marcial</h4>
+	<li class="attribute flexcargas">
+		<h4 class="attribute-name box-title-marcial">Carga Marcial</h4>
 		<div class="attribute-value multiple flexrow">
 
-			<button type="button" class="btn-decrement" onclick="alterarCargamarcial(-1)">–</button>
+			<button type="button" class="btn-decrement-marcial" onclick="alterarCargamarcial(-1)">–</button>
 
 			<input type="number" data-dtype="Number"
 						 placeholder="0"
@@ -36,7 +36,7 @@
 						 value="{{system.attributes.cargaMarcial.value}}"
 						 max="{{system.attributes.cargaMarcial.max}}">
 
-			<button type="button" class="btn-increment" onclick="alterarCargamarcial(1)">+</button>
+			<button type="button" class="btn-increment-marcial" onclick="alterarCargamarcial(1)">+</button>
 
 			<span class="sep">/</span>
 
