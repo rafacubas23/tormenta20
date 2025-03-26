@@ -316,9 +316,11 @@ const applyItemChanges = (ch, qty, ef, item, id) => {
 
 
 const actorFields = {
-	atributo:			["atributo", null],
-	treinado:			["treinado", null],
-	treino:				["treino", null]
+	atributo: ["atributo", null],
+	treinado: ["treinado", null],
+	treino:	["treino", null],
+	cargaArcana: ["attributes.cargaArcana.value"],
+	cargaMarcial: ["attributes.cargaMarcial.value"],
 }
 /** 
  * Modify data from actor
@@ -342,12 +344,13 @@ const applyActorChanges = (ch, qty, ef, item, id, ad) => {
 		}
 	}
 	// ADD CHANGES
-	else if( ch.mode == 2 ) {
-		if( Number(ch.value) ){
-			let temp = eval(`id.${campos[ch.key][0]}`) ?? false;
-			if( Number(temp) ) _campos[campos[ch.key][0]] = Number(temp)+ (Number(ch.value)*qty);
-			else if ( temp ) {
-				temp.replace(/\d+/, (match) => Number(match)+(Number(ch.value)*qty) );
+	else if (ch.mode == 2) {
+		if (Number(ch.value)) {
+			let temp = eval(`id.${actorFields[ch.key][0]}`) ?? false;
+			if (Number(temp))
+				_campos[actorFields[ch.key][0]] = Number(temp) + (Number(ch.value) * qty);
+			else if (temp) {
+				temp.replace(/\d+/, (match) => Number(match) + (Number(ch.value) * qty));
 			}
 		}
 	}
